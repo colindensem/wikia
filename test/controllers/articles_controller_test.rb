@@ -5,7 +5,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   setup do
     sign_in users(:adam)
-    @article = articles(:one)
+    @article = articles(:java)
   end
 
   test 'should get index' do

@@ -24,7 +24,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coderay'
 gem 'devise'
 gem 'haml'
-gem 'nokogiri'
 gem 'redcarpet'
 
 group :development, :test do

@@ -7,7 +7,7 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in users(:adam)
 
-    @section = sections(:oneA)
+    @section = sections(:java_one)
     @article = @section.article
   end
 

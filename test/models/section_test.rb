@@ -4,8 +4,8 @@ require 'test_helper'
 class SectionTest < ActiveSupport::TestCase
   def setup
     @user = users(:adam)
-    @article = articles(:one)
-    @section = sections(:oneA)
+    @article = articles(:java)
+    @section = sections(:java_one)
   end
 
   test 'valid section' do
@@ -31,14 +31,14 @@ class SectionTest < ActiveSupport::TestCase
   end
 
   test 'invalid with a duplicate title in article' do
-    doppleganger = sections(:oneA).dup
+    doppleganger = sections(:java_one).dup
     refute doppleganger.valid?, 'saved with duplicate title'
     assert_not_nil doppleganger.errors[:title], 'no validation error for duplicate title present'
   end
 
   test 'valid with a duplicate title different article' do
-    new_section = sections(:oneA)
-    new_section.article = articles(:two)
+    new_section = sections(:java_one)
+    new_section.article = articles(:ada)
     assert new_section.valid?, 'saved with duplicate title'
   end
 end

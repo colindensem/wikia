@@ -1,8 +1,11 @@
 %section
-
-  %h1
-    Articles
-
+  .mui-row
+    .mui-col-xs-5
+      %h1
+        Articles
+    .mui-col-xs-7
+      - if current_user
+        = link_to 'New Article', new_article_path, class: 'mui-btn mui-btn--primary mt2'
   - if @articles.empty?
     .mui--text-headline
       No Articles Found
@@ -21,5 +24,7 @@
         = article.excerpt
       %div.mui-divider.mb1
 
-- if current_user
-  = link_to 'New Article', new_article_path, class: 'mui-btn mui-btn--primary'
+
+
+%p
+  = render partial: 'shared/search'

@@ -7,12 +7,14 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all.includes(:author).search(params[:search])
   end
 
   # GET /articles/1
   # GET /articles/1.json
-  def show; end
+  def show
+    @article = Article.includes(:sections).find(params[:id])
+  end
 
   # GET /articles/new
   def new

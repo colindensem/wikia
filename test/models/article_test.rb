@@ -4,7 +4,7 @@ require 'test_helper'
 class ArticleTest < ActiveSupport::TestCase
   def setup
     @user = users(:adam)
-    @article = articles(:one)
+    @article = articles(:java)
   end
 
   test 'valid article' do
@@ -30,8 +30,57 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'invalid with a duplicate title' do
-    doppleganger = articles(:one).dup
+    doppleganger = articles(:java).dup
     refute doppleganger.valid?, 'saved with duplicate title'
     assert_not_nil doppleganger.errors[:title], 'no validation error for duplicate title present'
+  end
+
+  test '#search by impossible term' do
+    results = Article.search('Supercalifragilisticexpialidocious')
+    assert_equal results.size, 0
+  end
+
+  test '#search with nothing gives everything' do
+    results = Article.search('')
+    assert_equal results.size, 5
+  end
+
+  test '#search by a language' do
+    results = Article.search('elixir')
+    assert_equal results.size, 1
+    assert_includes results, articles(:elixir)
+    refute_includes results, articles(:java)
+  end
+
+  test '#search for term in multiple titles' do
+    results = Article.search('functional')
+    assert_equal results.size, 2
+    assert_includes results, articles(:elixir)
+    assert_includes results, articles(:ruby)
+
+    refute_includes results, articles(:java)
+  end
+
+  test '#search for multiple languages' do
+    results = Article.search('ada java')
+    assert_equal results.size, 2
+    assert_includes results, articles(:ada)
+    assert_includes results, articles(:java)
+
+    refute_includes results, [
+      articles(:csharp),
+      articles(:ruby),
+      articles(:elixir),
+    ]
+  end
+
+  test '#search multiple hits to returns uniq' do
+    results = Article.search('functional ruby')
+    assert_equal results.size, 2
+  end
+
+  test '#search case insensitive' do
+    results = Article.search('RUBY')
+    assert_equal results.size, 1
   end
 end

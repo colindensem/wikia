@@ -18,13 +18,13 @@ class ArticlesGuestTest < ApplicationSystemTestCase
   end
 
   test 'editing an article' do
-    article = articles(:one)
+    article = articles(:java)
     visit edit_article_url(article)
     assert_text 'You need to sign in or sign up before continuing'
   end
 
   test 'view an article' do
-    @article = articles(:one)
+    @article = articles(:java)
     visit articles_url
     click_on @article.title
     assert_selector 'h1', text: @article.title

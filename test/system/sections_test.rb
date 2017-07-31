@@ -4,8 +4,8 @@ require 'application_system_test_case'
 class SectionsTest < ApplicationSystemTestCase
   def setup
     sign_in users(:adam)
-    @article = articles(:one)
-    @section = sections(:oneA)
+    @article = articles(:java)
+    @section = sections(:java_one)
   end
 
   test 'access sections from article' do
@@ -17,7 +17,7 @@ class SectionsTest < ApplicationSystemTestCase
   end
 
   test 'sections for my article only' do
-    eves_section = sections(:twoA)
+    eves_section = sections(:adaA)
     visit article_sections_path(@article)
 
     assert_text @section.title
@@ -38,12 +38,12 @@ class SectionsTest < ApplicationSystemTestCase
   end
 
   test 'editing an article section' do
-    section = sections(:oneA)
+    section = sections(:java_one)
     visit edit_article_section_url(section.article, section)
   end
 
   test 'view an article section' do
-    section = sections(:oneA)
+    section = sections(:java_one)
     visit article_sections_url(section.article, section)
   end
 end

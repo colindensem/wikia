@@ -4,11 +4,33 @@ require 'application_system_test_case'
 class ArticlesTest < ApplicationSystemTestCase
   def setup
     sign_in users(:adam)
-    @article = articles(:one)
+    @article = articles(:java)
+  end
+
+  test 'view by language' do
+    visit articles_path
+
+    click_on 'Ada'
+
+    assert_selector 'h1', text: 'Articles'
+    assert_text 'Ada Lovelace'
+    refute_text 'Was I first'
+  end
+
+  test 'search from list of articles' do
+    search = articles(:java)
+
+    visit articles_path
+    fill_in 'search', with: search.title
+    click_button 'Search'
+
+    assert_selector 'div', class: 'mui--text-headline'
+    assert_selector 'a', text: search.title
+    refute_text articles(:ada).title
   end
 
   test 'view an article' do
-    article = articles(:with_markdown)
+    article = articles(:csharp)
     visit article_path(article)
 
     assert_selector 'strong', text: 'ternary'
@@ -16,14 +38,12 @@ class ArticlesTest < ApplicationSystemTestCase
   end
 
   test 'view an article with markdown sections' do
-    article = articles(:with_code)
+    article = articles(:ruby)
     visit article_path(article)
 
-    #checking for code tags implies markdown->coderay has processed
-    #not ideal #TODO improve
+    # checking for code tags implies markdown->coderay has processed
+    # not ideal #TODO improve
     assert_selector 'div', class: 'CodeRay'
-    
-
   end
 
   test 'creating an article' do
@@ -55,7 +75,7 @@ class ArticlesTest < ApplicationSystemTestCase
   end
 
   test 'updating another authors article' do
-    eves_article = articles(:two)
+    eves_article = articles(:ada)
     visit edit_article_path(eves_article)
 
     assert_text 'No access to that article'
