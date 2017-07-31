@@ -11,5 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require muicss/dist/css/mui
  *= require_self
  */

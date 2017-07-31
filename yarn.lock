@@ -2,3 +2,6 @@
 # yarn lockfile v1
 
 
+muicss@^0.9.20:
+  version "0.9.20"
+  resolved "https://registry.yarnpkg.com/muicss/-/muicss-0.9.20.tgz#be0e7b16da2cf135a5f54f6f7da7885ed2459233"
