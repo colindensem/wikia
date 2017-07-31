@@ -16,8 +16,8 @@ class SectionsTest < ApplicationSystemTestCase
     assert_selector 'a', text: 'NEW SECTION'
   end
 
-  test 'sections for my article only' do
-    eves_section = sections(:adaA)
+  test 'show sections for my article only' do
+    eves_section = sections(:ada_one)
     visit article_sections_path(@article)
 
     assert_text @section.title
@@ -42,8 +42,25 @@ class SectionsTest < ApplicationSystemTestCase
     visit edit_article_section_url(section.article, section)
   end
 
-  test 'view an article section' do
+  test 'view one of my article sections' do
     section = sections(:java_one)
     visit article_sections_url(section.article, section)
+    assert_selector 'h3', section.title
   end
+
+  test 'view any article section' do
+    section = sections(:ruby_one)
+    visit article_sections_url(section.article, section)
+    assert_selector 'h3', section.title
+  end
+
+
+  test 'edit another authors section' do
+    eves_article = articles(:ada)
+    eves_section = sections(:ada_one)
+    visit edit_article_section_path(eves_article, eves_section)
+
+    assert_text 'No access to that article'
+  end
+
 end

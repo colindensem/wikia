@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class SectionsController < ApplicationController
   before_action :set_article
+  before_action :article_author?, only: %i(new edit update destroy)
   before_action :set_section, only: [:show, :edit, :update, :destroy]
 
   # GET /sections
@@ -70,7 +71,7 @@ class SectionsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_section
-    @section = Section.find(params[:id])
+    @section = @article.sections.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
