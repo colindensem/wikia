@@ -12,4 +12,5 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require muicss/dist/js/mui
 //= require_tree .

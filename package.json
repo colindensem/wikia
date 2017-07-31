@@ -2,5 +2,6 @@
   "name": "app",
   "private": true,
   "dependencies": {
+    "muicss": "^0.9.20"
   }
 }

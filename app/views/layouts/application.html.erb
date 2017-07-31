@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>WIKIA - Your Article & Snippet Host</title>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +13,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    <div id='content-wrapper' class="mui-container">
+      <div class="mui--appbar-height"></div>
+      <%= yield %>
+
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
