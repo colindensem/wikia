@@ -1,0 +1,4 @@
+-if flash.present?
+  - flash.each do |type, message|
+    .mui-panel.flash{class: "flash-#{type}"}
+      = message

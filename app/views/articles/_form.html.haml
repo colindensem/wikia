@@ -1,0 +1,23 @@
+= form_with(model: article, local: true, class: 'mui-form') do |form|
+  - if article.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(article.errors.count, "error")
+        prohibited this article from being saved:
+      %ul
+        - article.errors.full_messages.each do |message|
+          %li= message
+  .mui-textfield
+    = form.label :title
+    = form.text_field :title, id: :article_title, required: true
+  .mui-textfield
+    = form.label :language
+    = form.text_field :language, id: :article_language, required: true
+  .mui-textfield
+    = form.label :excerpt
+    = form.text_field :excerpt, id: :article_excerpt, required: true
+  .mui-textfield
+    = form.label :body
+    = form.text_area :body, id: :article_body, required: true, rows:10
+  .actions
+    = form.submit class: 'mui-btn mui-btn--raised'

@@ -1,0 +1,27 @@
+%section
+
+  %h1.mui--text-display3.mui--divider-bottom
+    = @article.title
+  %p
+    In
+    = link_to(articles_path(search: @article.language)) do
+      = @article.language
+    by
+    = @article.author.name
+  %p.mui--text-subhead
+    = @article.excerpt
+
+  %p.mui--text-body
+    = markdown @article.body
+
+  = render partial: 'sections/section', collection: @article.sections
+
+%section
+  - if current_author?(@article, current_user)
+    = link_to 'Edit Article', edit_article_path(@article)
+    \|
+    = link_to 'Edit Sections', article_sections_path(@article)
+    \|
+
+  = link_to 'Back', articles_path
+

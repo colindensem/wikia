@@ -1,0 +1,15 @@
+.section{id: section.id}
+  %h3.title
+    =section.title
+  = markdown section.content
+  %br
+  - if current_author?(section.article, current_user)
+    \| Section
+    = link_to 'Show', article_section_path(section.article, section)
+    \|
+    = link_to 'Edit', edit_article_section_path(section.article,section)
+    \|
+    = link_to 'Destroy', article_section_path(section.article, section), method: :delete, data: { confirm: 'Are you sure?' }
+    \|
+
+%p.mui--divider-bottom

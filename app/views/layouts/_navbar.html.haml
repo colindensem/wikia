@@ -8,9 +8,32 @@
         %td{align: 'right'}
           %ul.mui-list--inline.mui--text-body2
             %li
-              %a{href:'#'}
-                Link1
-            %li
-              %a{href:'#'}
-                Link2
+              %a{href: articles_path}
+                Articles
+            - if current_user
+              %li
+                .mui-dropdown
+                  %button.mui-btn.mui-btn--primary{"data-mui-toggle" => "dropdown"}
+                    Account
+                    %span.mui-caret
+                  %ul.mui-dropdown__menu
+                    %li
+                      %a{href:'#'}
+                        = current_user.name
+                    %li
+                      = link_to(edit_user_registration_path) do
+                        Edit Account
+
+                    %li.mui--divider-top
+                      = link_to(destroy_user_session_path, {method: :delete}) do
+                        Logout
+
+
+            - else
+              %li
+                = link_to(new_user_registration_path) do
+                  Register
+              %li
+                = link_to(new_user_session_path) do
+                  Login
 

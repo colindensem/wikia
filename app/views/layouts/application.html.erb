@@ -16,6 +16,7 @@
     <%= render 'layouts/navbar' %>
     <div id='content-wrapper' class="mui-container">
       <div class="mui--appbar-height"></div>
+      <%= render 'layouts/flash', flash: flash %>
       <%= yield %>
 
     </div>

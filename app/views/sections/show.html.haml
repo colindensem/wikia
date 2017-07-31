@@ -1,0 +1,16 @@
+%section
+
+  %h1.mui--text-display3.mui--divider-bottom
+    %a{href: article_path(@section.article)}
+      = @section.article.title
+
+  = render partial: 'sections/section', collection: [@section]
+
+%section
+  - if current_author?(@article, current_user)
+    \|
+    = link_to 'Edit Section', edit_article_section_path(@section.article, @section)
+    \|
+    = link_to 'Back', article_path(@article)
+    \|
+

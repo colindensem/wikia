@@ -1,0 +1,8 @@
+<h1 class="mui--text-display3 mui--divider-bottom"><%= link_to @article.title, article_path(@article) %></h1>
+<h2>Sections</h2>
+
+ <%= render partial: 'sections/section', collection: @sections %>
+
+<br>
+
+<%= link_to 'New Section', new_article_section_path(@article), class: 'mui-btn mui-btn--primary' %>

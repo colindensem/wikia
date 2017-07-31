@@ -1,0 +1,25 @@
+%section
+
+  %h1
+    Articles
+
+  - if @articles.empty?
+    .mui--text-headline
+      No Articles Found
+  - else
+    - @articles.each do |article|
+      .mui--text-headline
+        = link_to article do
+          = article.title
+      .mui--text-black-54
+        In
+        = link_to(articles_path(search: article.language)) do
+          = article.language
+        By
+        = article.author.name
+      %div.mui--text-subhead
+        = article.excerpt
+      %div.mui-divider.mb1
+
+- if current_user
+  = link_to 'New Article', new_article_path, class: 'mui-btn mui-btn--primary'

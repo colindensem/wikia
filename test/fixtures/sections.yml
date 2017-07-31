@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+oneA:
+  article: one
+  title: AdamCodesA
+  content: MyText
+
+oneB:
+  article: one
+  title: AdamCodesB
+  content: MyText2
+
+twoA:
+  article: two
+  title: EveCodesA
+  content: MyText
+
+code_one:
+  article: with_code
+  title: Think of each like goto
+  content: >
+    Avoid using each, so not this:
+
+        cars=[]
+        ["focus", "mondeo", "fiesta"].each do |name|
+          cars << name.upcase
+        end
+    
+
+
+

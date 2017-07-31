@@ -1,0 +1,16 @@
+<h2>Resend unlock instructions</h2>
+
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'mui-form' }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="mui-textfield">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Resend unlock instructions", class: 'mui-btn mui-btn--raised' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

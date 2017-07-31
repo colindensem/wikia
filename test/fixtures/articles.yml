@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author: adam
+  title: Was I first
+  language: C++
+  excerpt: C++ was around long before...
+  body: Qui excepteur ex nisi voluptate quis ex. Tempor exercitation amet tempor eiusmod sit aliquip nulla sunt nostrud. Labore est ex Lorem eu velit tempor commodo.
+
+two:
+  author: eve
+  title: Rubies are red
+  language: Ruby
+  excerpt: Ruby is a precious gem
+  body: Dolor adipisicing proident minim anim adipisicing est ullamco consequat culpa sunt in eu eiusmod. Enim aute aliquip laborum dolor fugiat velit adipisicing cupidatat ullamco. Sit sint occaecat incididunt excepteur do amet nisi. Dolore exercitation tempor Lorem exercitation irure. Officia et dolore culpa consectetur excepteur ad excepteur id minim eiusmod amet.
+
+with_markdown:
+  author: adam
+  language: ruby
+  excerpt: When an if isn't an if
+  body: When it's a **ternary** or perhaps better a *case* statement
+
+with_code:
+  author: eve
+  language: ruby
+  excerpt: Is it functional?
+  body: A quick look at ruby as a functional language
