@@ -4,12 +4,27 @@ A conceptual application for a simple intranet wiki/document base
 
 ## Requirements
 
-* A wiki system for multiple users. Used to store internal documentation and code snippets & examples.
-* Allow users to join, author and manage a range of articles.
+* A wiki system for an intranet with multiple users.
+* Used to store internal documentation & code snippets.
+* Provide a basic search function on title and language category.
+* Allow users to join and manage a range of articles.
+
+## Usage Notes
+
+* Anyone can search & view any article.
+* Guests can create an account to become a registered user.
+* Registered users can manage their own article content via the account link in the navigation bar.
+* An article is compromised of itself and many sections.
+* Article and sections support the use of markdown for general formatting and code rendering.
+
+![Alt text](/screenshot.png?raw=true "Alpha Screenshot")
+
 
 ## Development
 
 Written using Rails 5.1
+
+Report all issues via the [issue tracker](https://github.com/colindensem/wikia/issues) on github.
 
 ### Local Development
 

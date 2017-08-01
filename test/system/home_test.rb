@@ -17,6 +17,19 @@ class HomePageTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Articles'
   end
 
+  test 'navigate to author page' do
+    author = users(:eve)
+    sign_in author
+    visit root_url
+    click_on 'Account'
+    click_on 'My Content'
+    assert_selector 'h1', text: author.name
+    visit root_url
+    click_on 'Account'
+    click_on author.name
+    assert_selector 'h1', text: author.name
+  end
+
   test 'search by exact title' do
     search = articles(:java)
     visit root_url

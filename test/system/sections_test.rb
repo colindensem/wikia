@@ -54,7 +54,6 @@ class SectionsTest < ApplicationSystemTestCase
     assert_selector 'h3', section.title
   end
 
-
   test 'edit another authors section' do
     eves_article = articles(:ada)
     eves_section = sections(:ada_one)
@@ -62,5 +61,4 @@ class SectionsTest < ApplicationSystemTestCase
 
     assert_text 'No access to that article'
   end
-
 end

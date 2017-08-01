@@ -1,9 +1,11 @@
 %section
   .mui-row
-    .mui-col-xs-6
+    .mui-col-xs-6.mui-col-md-8
       %h1
-        Articles
-    .mui-col-xs-6
+        %span.mui--hidden-xs
+          Articles by
+        =current_user.name
+    .mui-col-xs-6.mui-col-md-4
       - if current_user
         = link_to 'New Article', new_article_path, class: 'mui-btn mui-btn--primary mt2'
   - if @articles.empty?

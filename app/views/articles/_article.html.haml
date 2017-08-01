@@ -1,0 +1,13 @@
+.section{id: article.id}
+  .mui--text-headline
+    = link_to article do
+      = article.title
+  .mui--text-black-54
+    In
+    = link_to(articles_path(search: article.language)) do
+      = article.language
+    By
+    = article.author.name
+  %div.mui--text-subhead
+    = article.excerpt
+  %div.mui-divider.mb1

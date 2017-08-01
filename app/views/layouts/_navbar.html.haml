@@ -11,6 +11,7 @@
               %a{href: articles_path}
                 Articles
             - if current_user
+
               %li
                 .mui-dropdown
                   %button.mui-btn.mui-btn--primary{"data-mui-toggle" => "dropdown"}
@@ -18,8 +19,11 @@
                     %span.mui-caret
                   %ul.mui-dropdown__menu
                     %li
-                      %a{href:'#'}
+                      %a{href: author_path(current_user)}
                         = current_user.name
+                    %li
+                      %a{href: author_path(current_user)}
+                        My Content
                     %li
                       = link_to(edit_user_registration_path) do
                         Edit Account
