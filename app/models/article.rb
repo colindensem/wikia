@@ -9,10 +9,11 @@ class Article < ApplicationRecord
   validates :title, uniqueness: true, allow_blank: true
 
   scope :search, ->(terms) {
-    return if terms.blank?
-    terms.downcase.split(' ').map do |term|
-      where('LOWER(title) LIKE ?', "%#{term}%")
-        .or(Article.where('LOWER(language) LIKE ?', "%#{term}%"))
-    end.flatten.uniq
+    unless terms.blank?
+      terms.downcase.split(' ').map do |term|
+        where('LOWER(title) LIKE ?', "%#{term}%")
+          .or(Article.where('LOWER(language) LIKE ?', "%#{term}%"))
+      end.flatten.uniq
+    end
   }
 end
