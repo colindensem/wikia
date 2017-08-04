@@ -39,6 +39,7 @@ After cloning the repository, run locally, from your terminal run:
 bundle install
 bundle exec rake db:create:all
 yarn
+bundle exec rake db:migrate
 bundle exec rails s
 ```
 
